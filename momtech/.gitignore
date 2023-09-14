@@ -3,6 +3,12 @@
 # dependencies
 node_modules/
 
+#server's node_modules
+../server/node_modules
+
+#server's environment variable
+../server/.env 
+
 # Expo
 .expo/
 dist/
