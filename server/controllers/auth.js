@@ -26,6 +26,7 @@ const verifyEmail = async (req, res) => {
 
 const register = async (req, res) => {
      const {
+          user_email,
           user_first_name, 
           user_last_name
      } = req.body
@@ -37,7 +38,7 @@ const register = async (req, res) => {
 
      res.status(StatusCodes.CREATED).json({
           success: true,
-          data: registered_user
+          data: {user_email, _id: registered_user._id}
      })
 }
 
@@ -55,10 +56,14 @@ const login = async (req, res) => {
      if (!is_valid_password)  {
           throw new UnAuthorized("Invalid Credentials. Please register.")
      }
-
+     const {user_first_name, _id} = user
      res.status(StatusCodes.OK).json({
           success: true,
-          data: user
+          data: {
+               user_email,
+               user_first_name,
+               _id
+          }
      })
 }
 
